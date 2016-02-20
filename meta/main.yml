@@ -1,6 +1,7 @@
 galaxy_info:
   author: chengwei.chen
   description: 
+   - ubuntu install php7-fpm
   
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
