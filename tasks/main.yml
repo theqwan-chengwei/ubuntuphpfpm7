@@ -1,0 +1,18 @@
+---
+# tasks file for php7
+
+    - name: ==> 1 - add PPA of php7 (community)
+      apt_repository: repo="ppa:ondrej/php-7.0"
+
+
+    - debug: msg="==> 2 - add PPA of nginx (official) -- delegated to roles"
+
+    - name: ==> 3 - download/update the package lists
+      apt: update_cache=yes
+
+
+    - name: ==> 4 - install php-fpm, and php-mysql
+      apt: name={{ item }} state=present
+      with_items:
+        - php7.0-fpm
+        - php7.0-mysql
