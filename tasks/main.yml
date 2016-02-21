@@ -32,3 +32,19 @@
         line: "listen.group=nginx"
         state: present
       notify: restart php-fpm
+
+    - name: fix user for php-fpm
+      lineinfile:
+        dest: /etc/php/7.0/fpm/pool.d/www.conf
+        regexp: '^user\s*=.*$'
+        line: "user = nginx"
+        state: present
+      notify: restart php-fpm
+
+    - name: fix group for php-fpm
+      lineinfile:
+        dest: /etc/php/7.0/fpm/pool.d/www.conf
+        regexp: '^group\s*=.*$'
+        line: "group = nginx"
+        state: present
+      notify: restart php-fpm
